@@ -1,78 +1,93 @@
-# 🧩 UserForge API — Sistema de Padronização de Nomes e E-mails
+<h1 align="center">🧩 UserForge API</h1>
 
-Este é um projeto desenvolvido em **Python** com **FastAPI** e **SQLite**, que tem como objetivo **padronizar nomes e gerar e-mails corporativos automaticamente**, salvando os registros em um banco de dados.  
+<p align="center">
+  <b>Sistema de Padronização de Nomes e E-mails</b><br>
+  <i>Primeiro projeto do meu portfólio — desenvolvido com FastAPI, SQLite e SQLAlchemy</i> 🚀
+</p>
 
-Foi construído como parte dos meus estudos de **desenvolvimento de APIs com FastAPI**
+---
+
+## 🧠 Sobre o projeto
+
+O **UserForge API** é uma aplicação em **Python (FastAPI)** que realiza a **padronização automática de nomes** e a **geração de e-mails corporativos** no formato `<nome.sobrenome@empresa.com.br>`.  
+Além disso, os registros são armazenados em um banco de dados **SQLite**, com toda a validação feita por **Pydantic**.
+
+Este foi meu **primeiro projeto de portfólio**, construído passo a passo para consolidar conceitos de backend, APIs REST e persistência de dados. 💡
 
 ---
 
 ## ⚙️ Tecnologias utilizadas
 
-- 🐍 **Python 3.14**
-- ⚡ **FastAPI**
-- 🧠 **Pydantic**
-- 🧱 **SQLAlchemy**
-- 💾 **SQLite**
-- 🔍 **Regex (re)**
-- 🧰 **Uvicorn**
+| Tecnologia | Descrição |
+|-------------|------------|
+| 🐍 **Python 3.14** | Linguagem principal do projeto |
+| ⚡ **FastAPI** | Framework moderno para criação de APIs |
+| 🧱 **SQLAlchemy** | ORM para comunicação com o banco de dados |
+| 💾 **SQLite** | Banco de dados local simples e leve |
+| 🧠 **Pydantic** | Validação de dados com tipagem rigorosa |
+| 🔍 **Regex (re)** | Limpeza e normalização de textos |
+| 🧰 **Uvicorn** | Servidor ASGI para rodar a API |
 
 ---
 
-## 📂 Estrutura do projeto
+## 🗂️ Estrutura do projeto
 
 app/
 ├── main.py # Código principal da API
-└── init.py # (opcional, pode ser criado depois)
+└── init.py # (opcional)
 
-requirements.txt # Dependências do projeto
+requirements.txt # Lista de dependências
 usuarios.db # Banco de dados SQLite gerado automaticamente
 
+yaml
+Copiar código
 
 ---
 
 ## 🚀 Como rodar o projeto localmente
 
-### 1️⃣ Clonar o repositório
+### 🔹 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/gh-larissaventura/userforge-api.git
 cd userforge-api
-
-2️⃣ **Criar ambiente virtual e ativar**
+🔹 2. Criar e ativar o ambiente virtual
+bash
+Copiar código
 python -m venv .venv
 .\.venv\Scripts\activate
-
-3️⃣ **Instalar dependências**
+🔹 3. Instalar dependências
+bash
+Copiar código
 pip install -r requirements.txt
-
-4️⃣ **Rodar o servidor**
+🔹 4. Rodar o servidor
+bash
+Copiar código
 uvicorn app.main:app --reload
+🔗 Acesse a API: http://127.0.0.1:8000
+📘 Documentação interativa (Swagger): http://127.0.0.1:8000/docs
 
-A API ficará disponível em:
-👉 http://127.0.0.1:8000
+🧮 Funcionalidades
+✨ Padroniza nomes automaticamente
+✨ Gera e-mails corporativos válidos
+✨ Armazena usuários no banco de dados
+✨ Valida campos com Pydantic e Regex
+✨ API REST completa com rotas de criação e listagem
 
-E a documentação interativa (Swagger) em:
-👉 http://127.0.0.1:8000/docs
+🧠 Exemplos de uso
+🔸 POST /usuarios/
+Entrada:
 
-🧮 **Funcionalidades**
-
-✅ Padronização automática de nomes
-✅ Geração automática de e-mails corporativos (@empresa.com.br)
-✅ Armazenamento em banco de dados SQLite
-✅ Validação de e-mail com Pydantic
-✅ Endpoints RESTful com FastAPI
-
-🧠** Exemplo de uso**
-POST /usuarios/
-
-Envia um nome e um e-mail (o e-mail é obrigatório apenas para validação, mas é substituído por um e-mail corporativo gerado automaticamente):
-
+json
+Copiar código
 {
   "nome": "   MARIA   DAS   DORES   DE  SOUZA   ",
   "email": "teste@qualquercoisa.com"
-  
-**Resposta:**
+}
+Saída:
 
+json
+Copiar código
 {
   "id": 1,
   "nome": "Maria das Dores de Souza",
@@ -83,21 +98,33 @@ Envia um nome e um e-mail (o e-mail é obrigatório apenas para validação, mas
     "email_gerado": "maria.das.dores.de.souza@empresa.com.br"
   }
 }
+🔸 GET /usuarios/
+Saída:
 
-**GET /usuarios/**
-
-Retorna todos os usuários cadastrados no banco de dados.
-
-💡**Próximos passos**
-
+json
+Copiar código
+[
+  {
+    "id": 1,
+    "nome": "Maria das Dores de Souza",
+    "email": "maria.das.dores.de.souza@empresa.com.br"
+  }
+]
+💡 Próximos passos
  Adicionar testes automatizados com pytest
 
- Criar interface web para visualização
+ Criar uma interface web simples para visualização dos usuários
 
- Permitir exportação dos usuários em .csv
+ Adicionar exportação de dados para .csv
 
- Implementar autenticação (JWT)
+ Implementar autenticação com JWT
+
+👩‍💻 Autora
+Larissa Ventura
+💼 Diretora Financeira no Instituto Farol na Quebrada
+📊 Estudante de Ciência de Dados, apaixonada por tecnologia e impacto social.
+🌐 LinkedIn • GitHub
 
 🏷️ Licença
-
-Este projeto é de código aberto, sob a licença MIT.
+Distribuído sob a licença MIT.
+Sinta-se à vontade para usar, modificar e compartilhar! 💙
