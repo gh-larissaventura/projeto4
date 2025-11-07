@@ -39,3 +39,82 @@ app/
 
 requirements.txt       # Lista de dependências
 usuarios.db            # Banco de dados SQLite gerado automaticamente
+
+## 🚀 **Como rodar o projeto localmente**
+
+### 🔹 1. **Clonar o repositório**
+```bash
+git clone https://github.com/gh-larissaventura/userforge-api.git
+cd userforge-api
+
+### 🔹 2. **Criar e ativar o ambiente virtual**
+```bash
+python -m venv .venv
+.\.venv\Scripts\activate
+
+### 🔹 3. **Instalar dependências**
+```bash
+pip install -r requirements.txt
+
+### 🔹 4. **Rodar o servidor**
+```bash
+uvicorn app.main:app --reload
+
+🔗 **Acesse a API:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+📘 **Documentação interativa (Swagger):** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+## 🧮 **Funcionalidades**
+
+- ✅ Padroniza nomes automaticamente  
+- ✅ Gera e-mails corporativos válidos  
+- ✅ Armazena usuários no banco de dados  
+- ✅ Valida campos com Pydantic e Regex  
+- ✅ API REST completa com rotas de criação e listagem  
+
+## 🧠 **Exemplos de uso**
+
+### 🔸 POST `/usuarios/`
+
+**Entrada:**
+```json
+{
+  "nome": "   MARIA   DAS   DORES   DE  SOUZA   ",
+  "email": "teste@qualquercoisa.com"
+}
+
+**Saída:**
+{
+  "id": 1,
+  "nome": "Maria das Dores de Souza",
+  "email": "maria.das.dores.de.souza@empresa.com.br",
+  "detalhes": {
+    "nome_original": "   MARIA   DAS   DORES   DE  SOUZA   ",
+    "nome_padronizado": "Maria das Dores de Souza",
+    "email_gerado": "maria.das.dores.de.souza@empresa.com.br"
+  }
+}
+
+### 🔸 GET `/usuarios/`
+
+**Saída:**
+```json
+[
+  {
+    "id": 1,
+    "nome": "Maria das Dores de Souza",
+    "email": "maria.das.dores.de.souza@empresa.com.br"
+  }
+]
+
+## 💡 **Próximos passos**
+
+- [ ] Adicionar testes automatizados com **pytest**  
+- [ ] Criar uma interface web simples para visualização dos usuários  
+- [ ] Adicionar exportação de dados para `.csv`  
+- [ ] Implementar autenticação com **JWT**  
+
+🏷️ **Licença**
+
+Distribuído sob a licença MIT.
+Sinta-se à vontade para usar, modificar e compartilhar! 💙
